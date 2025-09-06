@@ -16,15 +16,49 @@ const HeroSection = ({ name = "Eliza Vorobieva" }: HeroSectionProps) => {
     "Designers",
     "Product managers",
     "Engineers",
+    "Healthtech",
   ];
 
+  const getContentForTab = (tab: string) => {
+    switch (tab) {
+      case "Recruiters":
+        return {
+          title: "Lead Product Designer with 7+ years of expereince",
+          description: "7+ years designing user-centered healthcare solutions. Proven track record of improving patient outcomes through thoughtful UX design. Currently leading design at UrgentIQ, where I've increased user engagement by 145% and task completion rates by 89%.",
+        };
+      case "Designers":
+        return {
+          title: "Designer with a passion for healthcare innovation",
+          description: "I specialize in creating intuitive interfaces for complex healthcare workflows. My design process focuses on user research, rapid prototyping, and iterative testing. I love collaborating with cross-functional teams to solve challenging design problems.",
+        };
+      case "Product managers":
+        return {
+          title: "Design-driven PM with healthcare expertise",
+          description: "I bridge the gap between user needs and business goals through data-driven design decisions. My experience in healthcare product development helps me understand both user pain points and regulatory requirements.",
+        };
+      case "Engineers":
+        return {
+          title: "Designer who speaks your language",
+          description: "I work closely with engineering teams to ensure designs are both beautiful and technically feasible. I understand frontend constraints, component libraries, and can create detailed design specifications that developers love.",
+        };
+        case "Healthtech":
+          return {
+            title: "Transforming health tech from clunky to cutting-edge—designing products that make care smarter, faster, and more human",
+            description: "I bring 6+ years of experience designing and scaling health tech products across dental, pharmacy, and urgent care startups. I’m passionate about replacing outdated systems with intuitive, innovative solutions—and leveraging AI to make care more efficient and personalized. I believe thoughtful product design can make healthcare better, more accessible, and truly human-centered.",
+          };
+  
+      default:
+        return {
+          title: "Product Designer with 6+ years of experience in healthcare innovation",
+          description: "I have a track record of building innovative and user-centric products. Currently I'm at UrgentIQ, where I create simple yet powerful solutions that empower healthcare providers to deliver the best care for their patients.",
+        };
+    }
+  };
+
+  const currentContent = getContentForTab(activeTab);
+
   return (
-    <section className="relative w-full min-h-[600px] flex items-center justify-center px-4 md:px-8 lg:px-16 bg-white">
-      {/* Background gradient */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#DC134C]/10 blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-blue-500/10 blur-3xl" />
-      </div>
+    <section className="relative w-full min-h-[600px] flex items-center justify-center px-4 md:px-8 lg:px-16">
 
       {/* Hero content */}
       <motion.div
@@ -33,7 +67,7 @@ const HeroSection = ({ name = "Eliza Vorobieva" }: HeroSectionProps) => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative z-10 max-w-7xl w-full"
       >
-        <div className="backdrop-blur-xl bg-white/70 rounded-3xl shadow-lg border border-white/20 p-8 md:p-12">
+        <div className="p-8 md:p-12">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -60,18 +94,26 @@ const HeroSection = ({ name = "Eliza Vorobieva" }: HeroSectionProps) => {
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black leading-tight">
-                Product Designer with 6+ years of experience in healthcare
-                innovation
-              </h1>
+              <motion.h1 
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black leading-tight"
+              >
+                {currentContent.title}
+              </motion.h1>
 
               {/* Description */}
-              <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-                I have a track record of building innovative and user-centric
-                products. Currently I'm at UrgentIQ, where I create simple yet
-                powerful solutions that empower healthcare providers to deliver
-                the best care for their patients.
-              </p>
+              <motion.p 
+                key={`${activeTab}-desc`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-lg text-gray-600 leading-relaxed max-w-lg"
+              >
+                {currentContent.description}
+              </motion.p>
 
               {/* Buttons */}
               <div className="flex gap-4">
@@ -92,7 +134,7 @@ const HeroSection = ({ name = "Eliza Vorobieva" }: HeroSectionProps) => {
             </div>
 
             {/* Right Content - Image Placeholder */}
-            <div className="flex justify-center lg:justify-end">
+            {/* <div className="flex justify-center lg:justify-end">
               <div className="w-80 h-80 bg-gray-100 rounded-2xl flex items-center justify-center border border-gray-200">
                 <svg
                   className="w-16 h-16 text-gray-400"
@@ -108,7 +150,7 @@ const HeroSection = ({ name = "Eliza Vorobieva" }: HeroSectionProps) => {
                   />
                 </svg>
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </motion.div>

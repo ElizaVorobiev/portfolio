@@ -7,11 +7,16 @@ import ProjectGrid from "./ProjectGrid";
 const Home = () => {
   return (
     <motion.div
-      className="min-h-screen bg-gradient-to-b from-white to-gray-50 px-4 md:px-8 lg:px-12 xl:px-24 py-12"
+      className="min-h-screen px-4 md:px-8 lg:px-12 xl:px-24 py-12 relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
+      {/* Background gradient - full width */}
+      <div className="absolute inset-0 w-screen left-1/2 -translate-x-1/2 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#DC134C]/10 blur-3xl" />
+        <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-blue-500/10 blur-3xl" />
+      </div>
       <div className="max-w-7xl mx-auto space-y-24">
         {/* Hero Section */}
         <HeroSection />
