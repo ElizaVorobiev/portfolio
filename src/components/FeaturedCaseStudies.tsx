@@ -9,7 +9,7 @@ interface CaseStudy {
   description: string;
   thumbnail: string;
   category: string;
-  year: string;
+  company: string;
   metrics: {
     label: string;
     value: string;
@@ -26,51 +26,47 @@ const FeaturedCaseStudies: React.FC<FeaturedCaseStudiesProps> = ({
   caseStudies = [
     {
       id: "1",
-      title: "Fintech Mobile App Redesign",
+      title: "AI Assisted Coding for Healthcare Providers",
       description:
-        "Reimagining personal finance management for Gen Z users with a focus on gamification and social features",
+        "Redesigning the EM coding experience to reduce provider time spent in charting and reduce under coding of clinic visits",
       thumbnail:
         "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80",
-      category: "Mobile App",
-      year: "2024",
+      category: "Web Platform",
+      company: "UrgentIQ",
       metrics: [
-        { label: "Increase in DAU", value: "145%", icon: "trending" },
-        { label: "Task Completion", value: "89%", icon: "check" },
-        { label: "App Store Rating", value: "4.8/5", icon: "star" },
+        { label: "Provider Adoption", value: "90%", icon: "check" },
+        { label: "Biller Satisfaction", value: "70%", icon: "star" },
       ],
-      link: "/case-study/fintech-redesign",
+      link: "/case-study/ai-assisted-coding",
     },
     {
       id: "2",
-      title: "Health Tracking Platform",
+      title: "Minor Ailments - The Patient Journey",
       description:
-        "Creating an intuitive health monitoring system that empowers users to take control of their wellbeing",
+        "Empowering patients to use their pharmacists for clinical services",
       thumbnail:
         "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80",
       category: "Web Platform",
-      year: "2024",
+      company: "MedMe",
       metrics: [
-        { label: "User Retention", value: "78%", icon: "trending" },
-        { label: "Daily Active Users", value: "124K", icon: "check" },
-        { label: "User Rating", value: "4.9/5", icon: "star" },
+        { label: "Appointments Booked in 3 Months", value: "35K", icon: "check" },
       ],
-      link: "/case-study/health-platform",
+      link: "/case-study/minor-ailments-the-patient-journey",
     },
     {
       id: "3",
-      title: "E-commerce Experience",
+      title: "Minor Ailments - The Pharmacist Journey",
       description:
-        "Elevating online shopping through personalized recommendations and seamless checkout flows",
+        "Empowering pharmacists to prescribe for minor ailments",
       thumbnail:
         "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&q=80",
-      category: "E-commerce",
-      year: "2023",
+      category: "Web Platform",
+      company: "MedMe",
       metrics: [
-        { label: "Conversion Rate", value: "23%", icon: "trending" },
-        { label: "Cart Completion", value: "65%", icon: "check" },
-        { label: "Customer Rating", value: "4.7/5", icon: "star" },
+        { label: "Revenue Generated in 3 Months", value: "700K", icon: "trending" },
+        { label: "New Deals Closed", value: "25", icon: "star" },
       ],
-      link: "/case-study/ecommerce-redesign",
+      link: "/case-study/minor-ailments-the-pharmacist-journey",
     },
   ],
 }) => {
@@ -151,7 +147,7 @@ const FeaturedCaseStudies: React.FC<FeaturedCaseStudiesProps> = ({
                         {study.category}
                       </Badge>
                       <span className="text-gray-500 font-medium">
-                        {study.year}
+                        {study.company}
                       </span>
                     </div>
 
