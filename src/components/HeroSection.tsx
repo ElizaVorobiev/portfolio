@@ -11,10 +11,10 @@ const HeroSection = ({ name = "Eliza Vorobieva" }: HeroSectionProps) => {
   const [activeTab, setActiveTab] = useState("For Anyone");
 
   const tabs = [
-    "For Anyone",
+    "Everyone",
     "Recruiters",
     "Designers",
-    "Product managers",
+    "Product Managers",
     "Engineers",
     "Healthtech",
   ];
@@ -22,36 +22,41 @@ const HeroSection = ({ name = "Eliza Vorobieva" }: HeroSectionProps) => {
   const getContentForTab = (tab: string) => {
     switch (tab) {
       case "Recruiters":
-        return {
-          title: "Lead Product Designer with 7+ years of expereince",
-          description: "7+ years designing user-centered healthcare solutions. Proven track record of improving patient outcomes through thoughtful UX design. Currently leading design at UrgentIQ, where I've increased user engagement by 145% and task completion rates by 89%.",
-        };
+        return [
+          { emoji: "🚀", title: "10+ years Expereince", description: "Built user-centric products from 0→1 and beyond." },
+          { emoji: "🎤", title: "Leadership", description: "Guided product from roadmap → research → design → launch." },
+          { emoji: "💻", title: "Technical Edge", description: "Engineering + design background (yes, I coded this site)." }
+        ];
       case "Designers":
-        return {
-          title: "Designer with a passion for healthcare innovation",
-          description: "I specialize in creating intuitive interfaces for complex healthcare workflows. My design process focuses on user research, rapid prototyping, and iterative testing. I love collaborating with cross-functional teams to solve challenging design problems.",
-        };
-      case "Product managers":
-        return {
-          title: "Design-driven PM with healthcare expertise",
-          description: "I bridge the gap between user needs and business goals through data-driven design decisions. My experience in healthcare product development helps me understand both user pain points and regulatory requirements.",
-        };
+        return [
+          { emoji: "🎨", title: "Design Process", description: "User research, rapid prototyping, and iterative testing." },
+          { emoji: "🤝", title: "Collaboration", description: "Love working with designers andcross-functional teams on complex problems." },
+          { emoji: "🔁", title: "Design Ops", description: "Created design processes and design systems from scratch." }
+        ];
+      case "Product Managers":
+        return [
+          { emoji: "📊", title: "Data-Driven", description: "Have expereince building dashboards and setting success metrics" },
+          { emoji: "🎯", title: "Strategic Thinking", description: "Love driving product strategy and roadmaps." },
+          { emoji: "⚡", title: "Velocity", description: "Deliver at strtup speed without sacrificing quality." }
+        ];
       case "Engineers":
-        return {
-          title: "Designer who speaks your language",
-          description: "I work closely with engineering teams to ensure designs are both beautiful and technically feasible. I understand frontend constraints, component libraries, and can create detailed design specifications that developers love.",
-        };
-        case "Healthtech":
-          return {
-            title: "Transforming health tech from clunky to cutting-edge—designing products that make care smarter, faster, and more human",
-            description: "I bring 6+ years of experience designing and scaling health tech products across dental, pharmacy, and urgent care startups. I’m passionate about replacing outdated systems with intuitive, innovative solutions—and leveraging AI to make care more efficient and personalized. I believe thoughtful product design can make healthcare better, more accessible, and truly human-centered.",
-          };
-  
+        return [
+          { emoji: "💻", title: "Technical Collaboration", description: "I believe in involving enginers in the design process and not just the end result." },
+          { emoji: "💡", title: "Tech Savvy", description: "Front‑end experience → smoother collaboration." },
+          { emoji: "🔧", title: "Handoff", description: "Designs dev‑ready, with edge cases covered." }
+        ];
+      case "Healthtech":
+        return [
+          { emoji: "🏥", title: "7 years in HealthTech", description: "Transforming clunky health tech into cutting-edge solutions in the dental, pharmacy and urgent care space." },
+          { emoji: "❤️", title: "Human-Centered", description: "Making healthcare better, more accessible, and truly human." },
+          { emoji: "🤖", title: "AI Integration", description: "Leveraging AI to make care more efficient and personalized." }
+        ];
       default:
-        return {
-          title: "Product Designer with 6+ years of experience in healthcare innovation",
-          description: "I have a track record of building innovative and user-centric products. Currently I'm at UrgentIQ, where I create simple yet powerful solutions that empower healthcare providers to deliver the best care for their patients.",
-        };
+        return [
+          { emoji: "🚀", title: "10+ years Expereince", description: "Built user-centric products from 0→1 and beyond." },
+          { emoji: "🎤", title: "Leadership", description: "Guided product from roadmap → research → design → launch." },
+          { emoji: "💻", title: "Technical Edge", description: "Engineering + design background (yes, I coded this site)." }
+        ];
     }
   };
 
@@ -68,52 +73,79 @@ const HeroSection = ({ name = "Eliza Vorobieva" }: HeroSectionProps) => {
         className="relative z-10 max-w-7xl w-full"
       >
         <div className="p-8 md:p-12">
+          {/* Full Width Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black leading-tight max-w-5xl mx-auto">
+              I'm <span className="text-[#DC134C]">Eliza</span>, a full‑stack, user‑centered product designer
+            </h1>
+          </motion.div>
+
+          {/* Centered Tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h3 className="text-md md:text-xl lg:text-2xl font-light tracking-tight leading-tight max-w-5xl mx-auto text-gray-500 mb-4">
+            Click on the tabs below to see what I bring to the table for:
+            </h3>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    activeTab === tab
+                      ? "bg-[#DC134C] text-white"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Content Grid - Dynamic Content Left, Image Right */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
           >
-            {/* Left Content */}
+            {/* Left Content - Dynamic Content Only */}
             <div className="space-y-8">
-              {/* Tabs */}
-              <div className="flex flex-wrap gap-2">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                      activeTab === tab
-                        ? "bg-black text-white"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
 
-              {/* Title */}
-              <motion.h1 
+              {/* Dynamic Content - Bullet Points */}
+              <motion.div 
                 key={activeTab}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black leading-tight"
+                className="space-y-4"
               >
-                {currentContent.title}
-              </motion.h1>
-
-              {/* Description */}
-              <motion.p 
-                key={`${activeTab}-desc`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-lg text-gray-600 leading-relaxed max-w-lg"
-              >
-                {currentContent.description}
-              </motion.p>
+                {currentContent.map((item, index) => (
+                  <motion.div
+                    key={`${activeTab}-${index}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="p-4 rounded-lg bg-white/50 backdrop-blur-sm border-2 border-white/20 shadow-lg"
+                  >
+                    <h3 className="font-semibold text-gray-900 mb-1 flex items-center gap-2">
+                      <span className="text-2xl">{item.emoji}</span>
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 ml-8">{item.description}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
 
               {/* Buttons */}
               <div className="flex gap-4">
@@ -133,9 +165,9 @@ const HeroSection = ({ name = "Eliza Vorobieva" }: HeroSectionProps) => {
               </div>
             </div>
 
-            {/* Right Content - Image Placeholder */}
-            {/* <div className="flex justify-center lg:justify-end">
-              <div className="w-80 h-80 bg-gray-100 rounded-2xl flex items-center justify-center border border-gray-200">
+            {/* Right Content - Image */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="w-full max-w-md h-96 bg-gray-100 rounded-2xl flex items-center justify-center border border-gray-200">
                 <svg
                   className="w-16 h-16 text-gray-400"
                   fill="none"
@@ -150,7 +182,8 @@ const HeroSection = ({ name = "Eliza Vorobieva" }: HeroSectionProps) => {
                   />
                 </svg>
               </div>
-            </div> */}
+            </div>
+
           </motion.div>
         </div>
       </motion.div>
